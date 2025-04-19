@@ -5,11 +5,11 @@ resource "aws_instance" "main" {
 
   tags = {
     Name    = "${var.name}-${var.env}"
-    Monitor = "yes"
+    # Monitor = "yes"
   }
-  lifecycle {
-    ignore_changes = [ami]
-  }
+#   lifecycle {
+#     ignore_changes = [ami]
+#   }
 }
 
 resource "null_resource" "main" {
@@ -18,16 +18,35 @@ resource "null_resource" "main" {
     timestamp = timestamp() # Forces execution on every apply
   }
 
-  connection {
+connection {
     type     = "ssh"
-    user     = data.vault_generic_secret.ssh.data["ssh_user"]
-    password = data.vault_generic_secret.ssh.data["ssh_pass"]
+    user     = "ec2-user"
+    password = "DevOps321"
     host     = aws_instance.main.private_ip
   }
-  provisioner "remote-exec" {
+
+#   connection {
+#     type     = "ssh"
+#     user     = data.vault_generic_secret.ssh.data["ssh_user"]
+#     password = data.vault_generic_secret.ssh.data["ssh_pass"]
+#     host     = aws_instance.main.private_ip
+#   }
+#   provisioner "remote-exec" {
+#     inline = [
+#       "sleep 10",
+#       "ansible-pull -U https://github.com/B59-CloudDevOps/learn-ansible.git -e env=${var.env} -e component=${var.name} -e token=${var.token} expense-pull.yaml"
+#     ]
+#   }
+
+
+provisioner "remote-exec" {
     inline = [
       "sleep 10",
-      "ansible-pull -U https://github.com/B59-CloudDevOps/learn-ansible.git -e env=${var.env} -e component=${var.name} -e token=${var.token} expense-pull.yaml"
+      "pip3.11 install ansible",
+      "ansible-pull -U https://github.com/YashavanthaN8057/learn-ansible.git -e env=${var.env} -e component=${var.name} expense-pull.yml"
     ]
   }
+
+
+
 }

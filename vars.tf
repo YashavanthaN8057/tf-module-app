@@ -4,6 +4,6 @@ variable "name" {}
 variable "zone_id" {}
 variable "port_no" {}
 variable "port_no_of_ssh" {}
-variable "port_no_of_node_exporter" {}
-variable "token" {}
-variable "prometheus_server" {}
+# variable "port_no_of_node_exporter" {}
+# variable "token" {}
+# variable "prometheus_server" {}
