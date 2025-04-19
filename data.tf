@@ -1,5 +1,5 @@
 data "aws_route53_zone" "main" {
-  name         = "clouding-app.shop"
+  name         = "cloudcera.shop"
   private_zone = false
 }
 
@@ -7,9 +7,9 @@ data "aws_route53_zone" "main" {
 data "aws_ami" "main" {
   most_recent = true
   name_regex  = "b59-learning-ami-with-ansible"
-  owners      = ["355449129696"]
+  owners      = ["034362053751"]
 }
 
-data "vault_generic_secret" "ssh" {
-  path = "expense-dev/ssh_cred"
-}
+# data "vault_generic_secret" "ssh" {
+#   path = "expense-dev/ssh_cred"
+# }
