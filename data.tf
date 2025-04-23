@@ -6,7 +6,7 @@ data "aws_route53_zone" "main" {
 # Once you make your own ami using the lab image with Ansible installation
 data "aws_ami" "main" {
   most_recent = true
-  name_regex  = "b59-learning-ami-with-ansible"
+  name_regex  = "DevOps-LabImage-RHEL9"
   owners      = ["034362053751"]
 }
 
