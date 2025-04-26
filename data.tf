@@ -9,7 +9,7 @@ data "aws_route53_zone" "main" {
 data "aws_ami" "main" {
   most_recent = true
   name_regex  = "b59-learning-ami-with-ansible"
-  owners      = ["0343-6205-3751"]
+  owners      = ["034362053751"]
 }
 
 # data "vault_generic_secret" "ssh" {
