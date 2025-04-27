@@ -4,7 +4,7 @@ variable "name" {}
 variable "zone_id" {}
 variable "port_no" {}
 variable "port_no_of_ssh" {}
-
+variable "token" {}
 variable "ami" {
   default = "ami-0b2c655c71dbd69d9"
 }
