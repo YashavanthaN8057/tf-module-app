@@ -12,6 +12,6 @@ data "aws_ami" "main" {
   owners      = ["034362053751"]
 }
 
-# data "vault_generic_secret" "ssh" {
-#   path = "expense-dev/ssh_cred"
-# }
+data "vault_generic_secret" "ssh" {
+  path = "expense-dev/ssh_cred"
+}
